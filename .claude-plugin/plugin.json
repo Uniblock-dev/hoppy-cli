@@ -1,0 +1,17 @@
+{
+  "name": "hoppy",
+  "description": "Hopscotch Agents in Claude Code: give your Hopscotch agents tasks, watch them work, read their steps, logs and files, sleep and wake them",
+  "author": {
+    "name": "Hopscotch Labs",
+    "url": "https://hopscotchlabs.ai"
+  },
+  "homepage": "https://hopscotchlabs.ai",
+  "repository": "https://github.com/Uniblock-dev/hoppy-cli",
+  "icon": ".claude-plugin/icon.png",
+  "keywords": [
+    "hopscotch",
+    "agents",
+    "hoppy",
+    "mcp"
+  ]
+}

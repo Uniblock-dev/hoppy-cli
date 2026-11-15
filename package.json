@@ -1,0 +1,39 @@
+{
+  "name": "hoppy",
+  "version": "0.1.0",
+  "description": "Hopscotch Agents in Claude Code: give your Hopscotch agents tasks, watch them work, read their steps, logs and files, sleep and wake them",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "hoppy": "cli/hoppy.js"
+  },
+  "engines": {
+    "node": ">=22.18"
+  },
+  "license": "SEE LICENSE IN LICENSE",
+  "author": {
+    "name": "Hopscotch Labs",
+    "url": "https://hopscotchlabs.ai"
+  },
+  "homepage": "https://hopscotchlabs.ai",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Uniblock-dev/hoppy-cli.git"
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "cli/fleet.js",
+    "cli/hidden.js",
+    "cli/hoppy.js",
+    "cli/markdown.js",
+    "cli/mcp.js",
+    "cli/names.js",
+    "cli/pool.js",
+    "cli/served.js",
+    "cli/task.js",
+    "cli/words.js",
+    "typescript/src/index.js",
+    "typescript/src/stream.js"
+  ]
+}

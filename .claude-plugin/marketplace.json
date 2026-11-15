@@ -1,0 +1,14 @@
+{
+  "name": "hopscotch",
+  "description": "Hopscotch plugins for Claude Code",
+  "owner": {
+    "name": "Hopscotch Labs"
+  },
+  "plugins": [
+    {
+      "name": "hoppy",
+      "source": "./",
+      "description": "Hopscotch Agents in Claude Code: give your Hopscotch agents tasks, watch them work, read their steps, logs and files, sleep and wake them"
+    }
+  ]
+}
