@@ -358,7 +358,7 @@ function dropInterruptedSaves(path: string) {
 /**
  * The key: from --key-file, else HOPPY_KEY, else the default file, which must be readable by its
  * owner only. brain is the brain hoppy login saved the key from, or null for a key from HOPPY_KEY
- * or a file holding only a key (one made on the Keys page). Both come from one file, written whole
+ * or a file holding only a key (one an owner or admin made on the Keys page). Both come from one file, written whole
  * by one rename, so a key is never paired with another key's brain.
  */
 function readSaved(file: string | undefined): { key: string; brain: string | null } {
@@ -1839,17 +1839,17 @@ async function login(url: string, file: string | undefined, force: boolean, fetc
     await callback?.settle(false);
     callback?.close();
   }
-  if (oldUnread) note(`hoppy could not read the key that was in ${path} before, so it may still work; revoke it on the Keys page`);
-  // A key with no brain line (made on the Keys page) may be from any brain, and only the brain that
+  if (oldUnread) note(`hoppy could not read the key that was in ${path} before, so it may still work; revoke it in Hoppy, under Settings, Signed-in terminals`);
+  // A key with no brain line (made by hand from the Keys page) may be from any brain, and only the brain that
   // made it may be sent it: sending it here to revoke it would hand this brain another brain's key.
   if (old && !old.brain)
-    note(`the key that was in ${path} before does not say which brain made it, so hoppy sent it nowhere to revoke it; it may still work, so revoke it on the Keys page`);
+    note(`the key that was in ${path} before does not say which brain made it, so hoppy sent it nowhere to revoke it; it may still work, so revoke it in Hoppy, under Settings, Signed-in terminals, if you made it, or ask an owner or admin of the workspace to revoke it on the Keys page`);
   else if (old?.brain) {
     try {
       const r = await revokeKey(old.brain, old.key, fetcher);
       note(r.refused ? `the key that was in ${path} before was already refused` : `revoked the key that was in ${path} before`);
     } catch (e) {
-      note(`the key that was in ${path} before ${e instanceof AgentHostError ? 'still works' : 'may still work'}; revoke it on the Keys page`);
+      note(`the key that was in ${path} before ${e instanceof AgentHostError ? 'still works' : 'may still work'}; revoke it in Hoppy, under Settings, Signed-in terminals`);
     }
   }
   const me = await new AgentHost({ url, apiKey: token, ...(fetcher ? { fetch: fetcher } : {}) }).me();
@@ -1924,7 +1924,7 @@ async function logout(urlGiven: string, file: string | undefined, fetcher: typeo
   try {
     r = await revokeKey(url, key, fetcher);
   } catch (e) {
-    if (e instanceof AgentHostError) note(`the key still works and ${where}; revoke it on the Keys page, then delete the file${path ? '' : ' or unset HOPPY_KEY'}`);
+    if (e instanceof AgentHostError) note(`the key still works and ${where}; revoke it in Hoppy, under Settings, Signed-in terminals, then delete the file${path ? '' : ' or unset HOPPY_KEY'}`);
     throw e;
   }
   if (r.refused) {
@@ -2185,7 +2185,7 @@ function fail(e: unknown): number {
   else if (code === 'not_built_yet') note(`hoppy: this brain does not serve ${doing} yet (${status} ${code})`);
   else note(`hoppy: ${message}${code === 'usage' || code === 'unreachable' ? '' : status ? ` (${status} ${code})` : ` (${code})`}`);
   if (code === 'not_found') note(`this brain has no route for ${doing}; it may not serve it yet`);
-  if (doing === 'login' && (code === 'not_built_yet' || code === 'not_found' || /does not serve hoppy login yet/.test(message as string))) note(`until then, make a key on the Keys page and put it in ${keyPath(undefined)} (chmod 600)`);
+  if (doing === 'login' && (code === 'not_built_yet' || code === 'not_found' || /does not serve hoppy login yet/.test(message as string))) note(`until then, ask an owner or admin of the workspace for a key from the Keys page and put it in ${keyPath(undefined)} (chmod 600)`);
   if (exit === 2) note('run hoppy help for the commands');
   return exit as number;
 }

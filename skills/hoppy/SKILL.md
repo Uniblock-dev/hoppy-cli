@@ -11,6 +11,7 @@ The hoppy tools (named `mcp__plugin_hoppy_hoppy__<tool>` in Claude Code) talk to
 
 - If a tool says `not signed in`, run `/hoppy:login` (the login skill of this plugin) and try again. No restart is needed afterwards.
 - Never print, ask for, or write down a key. hoppy keeps it in `~/.config/hoppy/key`; leave that file alone.
+- The `hoppy` commands named below (such as `hoppy env set` or `hoppy fleet list`) run in the user's terminal. A user without the command installs it with `npm install -g github:Uniblock-dev/hoppy-cli` (Node 22.18 or newer), or runs one command once with `npx -y github:Uniblock-dev/hoppy-cli <command>`. The README at https://github.com/Uniblock-dev/hoppy-cli has every command.
 
 ## Give an agent a task
 

@@ -37,4 +37,6 @@ hoppy opens Hoppy in the user's browser by itself. They approve the sign-in ther
 - Never `cat`, read, copy or print the key file, and never put a key on a command line or in a message.
 - Never open the address yourself with a browser tool: hoppy opens it, and an approval must happen in the user's own browser on this computer.
 - Do not run `hoppy login --force` unless the user asks to replace the key they have.
+- To sign out, the user runs `npx -y github:Uniblock-dev/hoppy-cli logout` in a terminal (or `hoppy logout` with the command installed): it ends the key on the service and removes the key file, for this plugin too.
+- The plugin and the command come from the public repository https://github.com/Uniblock-dev/hoppy-cli; its README says how to install and update them.
 - To sign in to a brain other than the dev one, the user sets `HOPPY_URL` before starting Claude Code, so the tools and these commands use the same brain.

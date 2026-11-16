@@ -124,7 +124,7 @@ Exit codes: 0 done, 1 the service refused or the message failed, 2 wrong usage o
 
 `hoppy login` saves a key in `~/.config/hoppy/key` (under `XDG_CONFIG_HOME` when it is set), a file only you can read, with the address of the service it belongs to on the line after it. The key can read and manage your agents and lasts 90 days. hoppy never prints it, and takes any key out of everything it prints, apart from files fetched with `files get`, which are saved exactly as they are. hoppy also reads a key from `--key-file <path>` or the `HOPPY_KEY` environment variable.
 
-To revoke it, run `hoppy logout`: it revokes the key on the service and deletes the file. You can also revoke any key on the Keys page in Hoppy.
+To revoke it, run `hoppy logout`: it revokes the key on the service and deletes the file. If you no longer have that computer, or the file is gone, revoke the key in Hoppy, under Settings, Signed-in terminals, which lists every key your sign-ins made.
 
 ## Which service it talks to
 
